@@ -19,9 +19,9 @@ const Atm = () => {
                 <button className={classes.digit} data-digit='7' >7</button>
                 <button className={classes.digit} data-digit='8' >8</button>
                 <button className={classes.digit} data-digit='9' >9</button>
-                <button className={classes.digit} data-enter='enter' style={{backgroundColor: 'var(--greenButton)'}}>Enter</button>
+                <button className={classes.digit} data-enter='enter' style={{backgroundColor: 'var(--greenButton)', color: '#fff', fontWeight: 'normal'}}>Enter</button>
                 <button className={classes.digit} data-digit='0' >0</button>
-                <button style={{backgroundColor: 'var(--orange)'}} className={classes.digit} data-cancel='cancel' >Cancel</button>
+                <button style={{backgroundColor: '#efa43d', color: '#fff', fontWeight: 'normal'}} className={classes.digit} data-cancel='cancel' >Cancel</button>
                 <div className={classes.moneyOut} ></div>
             </div>
         </div>

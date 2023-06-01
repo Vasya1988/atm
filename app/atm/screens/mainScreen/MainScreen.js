@@ -6,12 +6,14 @@ const MainScreen = () => {
         <div 
             className={classes.MainScreen}
         >
-            <CashButton sum='sum' />
-            <CashButton sum='sum' />
-            <CashButton sum='sum' />
-            <CashButton sum='sum' />
-            <CashButton sum='sum' />
-            <CashButton sum='sum' />
+            <CashButton sum='10$' />
+            <CashButton sum='20$' />
+            <CashButton sum='50$' />
+            <CashButton sum='100$' />
+            <CashButton sum='500%' />
+            <CashButton sum='1000%' />
+            <CashButton sum='Settings' />
+            <CashButton sum='Other sum' />
         </div>
     )
 }
