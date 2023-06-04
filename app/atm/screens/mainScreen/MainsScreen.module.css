@@ -1,0 +1,6 @@
+.MainScreen {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, 1fr)); }
+
+/*# sourceMappingURL=MainsScreen.module.css.map */
