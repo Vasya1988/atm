@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,MAAM;EACF,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,UAAU;EACtB,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,OAAO",
-"sources": ["Title.module.sass"],
-"names": [],
-"file": "Title.module.css"
-}
