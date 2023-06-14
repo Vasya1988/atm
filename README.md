@@ -29,5 +29,7 @@
   ```
   ----
 
-[Офорлмение github reademe](https://github.com/GnuriaN/format-README)
 [Источник](https://blog.sallai.me/deploy-next-site-to-github-pages)
+
+[Офорлмение github readme](https://github.com/GnuriaN/format-README)
+
