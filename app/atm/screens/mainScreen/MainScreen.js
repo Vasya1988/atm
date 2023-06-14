@@ -6,6 +6,15 @@ const MainScreen = () => {
         <div 
             className={classes.MainScreen}
         >
+            <div
+                className={classes.Enter}
+            >
+                <input 
+                    data-enter='enter' 
+                    type='text'
+                    placeholder='Enter your sum'
+                />
+            </div>
             <CashButton sum='10$' />
             <CashButton sum='20$' />
             <CashButton sum='50$' />
