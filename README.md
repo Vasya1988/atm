@@ -28,7 +28,7 @@
   "deploy": "gh-pages -d out"
   ```
   ----
-  [Источник](https://blog.sallai.me/deploy-next-site-to-github-pages
-)
 
 [Офорлмение github reademe](https://github.com/GnuriaN/format-README)
+
+<a href="https://blog.sallai.me/deploy-next-site-to-github-pages" target="_blank">Источник</a>
