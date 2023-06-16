@@ -1,8 +1,8 @@
 import classes from './CashButton.module.sass'
 
-const CashButton = ({sum}) => {
+const CashButton = ({sum, dataName}) => {
     return (
-        <div className={classes.CashButton} >
+        <div data-cash={dataName} className={classes.CashButton} >
             <p>{sum}</p>
         </div>
     )

@@ -3,15 +3,19 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(100px, 1fr)); }
   .MainScreen .Enter {
+    padding: 52px 0 0 0;
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 6;
     display: flex;
-    padding: 100px 0 0 0;
-    align-items: flex-start;
-    justify-content: center; }
+    flex-direction: column;
+    align-items: center; }
+    .MainScreen .Enter .result {
+      font-size: large;
+      color: #638b9f; }
     .MainScreen .Enter input {
+      margin-bottom: 16px;
       width: 80%;
       border: none;
       border-bottom: 2px solid var(--lightblue);
