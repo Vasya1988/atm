@@ -1,7 +1,7 @@
-import classes from './MainsScreen.module.sass'
+import classes from './main.module.sass'
 import CashButton from '@/components/cashButton/CashButton'
 
-const MainScreen = () => {
+const Main = () => {
     return (
         <div 
             className={classes.MainScreen}
@@ -34,4 +34,4 @@ const MainScreen = () => {
     )
 }
 
-export default MainScreen
+export default Main

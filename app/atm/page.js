@@ -1,13 +1,18 @@
 import classes from './Atm.module.sass'
-import MainScreen from './screens/mainScreen/MainScreen'
+import React from 'react'
+import main from './main/page'
 import Title from '@/components/title/Title'
+import Link from 'next/link'
 
-const Atm = () => {
+const AtmLayout = ( {children}) => {
+    
     return (
         <div className={classes.Atm} >
             <div className={classes.atmScreen}>
                 <Title tag='h2' text='Cash' />
-                <MainScreen />
+                <Link href={'/atm/main'}>cash</Link>
+                <Link href={'/atm/setup'}>setup</Link>
+                {children}
             </div>
             <div className={classes.digits}>
                 <button className={classes.digit} data-digit='1' >1</button>
@@ -28,4 +33,4 @@ const Atm = () => {
     )
 }
 
-export default Atm
+export default AtmLayout
