@@ -1,7 +1,7 @@
 import styles from './page.module.sass'
 import Atm from './atm/page'
 
-export default function Home() {
+export default function Home({children}) {
 
   const elemenstOnPage = {
     dataCash: 'data-cash'
@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <Atm />
+      <Atm/>
     </>
   )
 }
