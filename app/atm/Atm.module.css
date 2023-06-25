@@ -52,6 +52,13 @@
       .Atm .atmScreen {
         width: 100%;
         height: inherit; } }
+    .Atm .atmScreen .Navigate {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f2f2f2; }
+      .Atm .atmScreen .Navigate a {
+        text-decoration: none;
+        color: #484848; }
   .Atm .digits {
     padding: 20px;
     box-sizing: border-box;

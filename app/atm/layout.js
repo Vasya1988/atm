@@ -6,9 +6,12 @@ const AtmLayout = ({children}) => {
     return (
         <div className={classes.Atm} >
             <div className={classes.atmScreen}>
+                <nav className={classes.Navigate}>
+                    <Link href={'/atm/main'}>cash</Link>
+                    <Link href={'/atm/setup'}>setup</Link>
+                    <Link href={'/'}>back</Link>
+                </nav>
                 <Title tag='h2' text='Cash' />
-                <Link href={'/atm/main'}>cash</Link>
-                <Link href={'/atm/setup'}>setup</Link>
                 <main>{children}</main>
             </div>
             <div className={classes.digits}>
