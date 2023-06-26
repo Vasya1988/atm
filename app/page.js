@@ -15,7 +15,7 @@ export default function Home({children}) {
   return (
     <>
       <Link
-        href={'./atm'}
+        href={'./atm/main'}
         className={styles.start} 
       >
         Let's start!
@@ -23,7 +23,7 @@ export default function Home({children}) {
       <p>
         Hi there! <br/>
         I wanna show you an app atm machine <br/>
-        Following code code calculates amount of banknotes to give out
+        Following code calculates amount of banknotes to give out
         <br/><br/>Например: <br/>
           Выдать 1000 руб.<br/>
           500 руб. - 1 шт.<br/>
@@ -34,3 +34,5 @@ export default function Home({children}) {
     </>
   )
 }
+
+// +7 968 684-29-76
