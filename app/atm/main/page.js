@@ -1,7 +1,7 @@
 import classes from './main.module.sass'
 import CashButton from '@/components/cashButton/CashButton'
 
-const Main = () => {
+const Main = (props) => {
     return (
         <div 
             className={classes.MainScreen}

@@ -1,16 +1,24 @@
 import classes from './Atm.module.sass'
 import Title from '@/components/title/Title'
 import Link from 'next/link'
+import Navigation from '@/components/navigation/Navigation'
+
+const NavItems = [
+    {label: 'Cash', href: '/atm/main/'},
+    {label: 'Setup', href: '/atm/setup/'},
+    {label: 'Back', href: '/'}
+]
 
 const AtmLayout = ({children}) => {
     return (
         <div className={classes.Atm} >
             <div className={classes.atmScreen}>
-                <nav className={classes.Navigate}>
+                <Navigation navLinks={NavItems}/>
+                {/* <nav className={classes.Navigate}>
                     <Link href={'/atm/main'}>cash</Link>
                     <Link href={'/atm/setup'}>setup</Link>
                     <Link href={'/'}>back</Link>
-                </nav>
+                </nav> */}
                 <Title tag='h2' text='Cash' />
                 <main>{children}</main>
             </div>
