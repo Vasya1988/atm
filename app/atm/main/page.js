@@ -1,7 +1,16 @@
+'use client'
+import { useState } from 'react'
 import classes from './main.module.sass'
 import CashButton from '@/components/cashButton/CashButton'
 
+const digitsValidate = (prop) => {
+    console.log(!Number(prop))
+    return Number(prop)
+}
+
 const Main = (props) => {
+    const [getCash, setGetCash] = useState('')
+
     return (
         <div 
             className={classes.MainScreen}
@@ -9,13 +18,22 @@ const Main = (props) => {
             <div
                 className={classes.Enter}
             >
-                <input 
-                    data-enter='enter' 
-                    type='text'
-                    placeholder='Enter your sum'
-                />
+                <form
+                    style={{textAlign: 'center'}}
+                    onSubmit={(cash) => {
+                        cash.preventDefault()
+                        !Number(cash.target[0].value) ? (alert('Введите цифры'), cash.target[0].value='', setGetCash('')) : setGetCash(`${cash.target[0].value} $`)
+                        
+                    }}
+                >
+                    <input 
+                        data-enter='enter' 
+                        type='text'
+                        placeholder='Enter your sum'
+                    />
+                </form>
                 <span className={classes.result}>
-                    got: 2700$<br/>
+                    got: {`${getCash}`}<br/>
                     <br/>
                     1000: 2<br/>
                     500: 1<br/>

@@ -1,6 +1,6 @@
 import classes from './Title.module.sass'
 
-const Title = ({tag, text}) => {
+const Title = ({props, tag, text}) => {
     const Tag = tag || 'h1';
     return (
         <Tag className={classes.Title}>
