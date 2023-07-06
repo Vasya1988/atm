@@ -19,13 +19,12 @@ const Navigation = (props) => {
                         const isActive = pathName === link.href
                         
                         console.log('this path --> ', link.href, pathName, isActive)
-                        console.log(myText)
 
                         return (
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className={isActive ? (useEffect(()=> setMyText(link.label)), classes.active) : ''}
+                                className={isActive ? classes.active : ''}
                             >
                                 {link.label}
                             </Link>

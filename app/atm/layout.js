@@ -3,8 +3,8 @@ import Navigation from '@/components/navigation/Navigation'
 
 
 const NavItems = [
-    {label: 'Cash', href: '/atm/main/'},
-    {label: 'Setup', href: '/atm/setup/'},
+    {label: 'Cash', href: '/atm/main'},
+    {label: 'Setup', href: '/atm/setup'},
     {label: 'Back', href: '/'}
 ]
 
