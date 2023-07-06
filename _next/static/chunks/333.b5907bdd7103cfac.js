@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[333],{4333:function(a){a.exports={style:{fontFamily:"'__Inter_aa23dc', '__Inter_Fallback_aa23dc'",fontStyle:"normal"},className:"__className_aa23dc"}}}]);
