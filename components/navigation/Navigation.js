@@ -19,15 +19,19 @@ const Navigation = (props) => {
                         const activePage = pathName.split('/')
                         const isActive = link.label.toLowerCase() === activePage[activePage.length-1]
                         
+<<<<<<< HEAD
                         console.log('this path --> ', link.label.toLowerCase(), activePage[activePage.length-1])
                         console.log(isActive)
                         console.log(myText)
+=======
+                        console.log('this path --> ', link.href, pathName, isActive)
+>>>>>>> origin/main
 
                         return (
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className={isActive ? (useEffect(()=> setMyText(link.label)), classes.active) : ''}
+                                className={isActive ? classes.active : ''}
                             >
                                 {link.label}
                             </Link>
