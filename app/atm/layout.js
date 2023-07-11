@@ -3,9 +3,9 @@ import Navigation from '@/components/navigation/Navigation'
 
 
 const NavItems = [
-    {label: 'Cash', href: '/atm/main/'},
-    {label: 'Setup', href: '/atm/setup/'},
-    {label: 'Back', href: '/'}
+    {label: 'Cash', href: '/atm/cash'},
+    {label: 'Setup', href: '/atm/setup'},
+    {label: 'Back', href: './'}
 ]
 
 const AtmLayout = ({children}) => {

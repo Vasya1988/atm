@@ -1,5 +1,4 @@
 import styles from './page.module.sass'
-import Atm from './atm/page'
 import Link from 'next/link'
 
 export default function Home({children}) {
@@ -15,7 +14,7 @@ export default function Home({children}) {
   return (
     <>
       <Link
-        href={'./atm/main'}
+        href={'./atm/cash'}
         className={styles.start} 
       >
         Let's start!

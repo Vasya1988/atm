@@ -16,9 +16,11 @@ const Navigation = (props) => {
             <nav className={classes.Navigate}>
                 {
                     props.navLinks.map((link) => {
-                        const isActive = pathName === link.href
+                        const activePage = pathName.split('/')
+                        const isActive = link.label.toLowerCase() === activePage[activePage.length-1]
                         
-                        console.log('this path --> ', link.href, pathName, isActive)
+                        console.log('this path --> ', link.label.toLowerCase(), activePage[activePage.length-1])
+                        console.log(isActive)
                         console.log(myText)
 
                         return (
