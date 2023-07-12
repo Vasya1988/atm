@@ -11,17 +11,10 @@
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
-<<<<<<< HEAD
     "next": "^13.4.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.63.6"
-=======
-    "next": "^13.4.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.62.1"
->>>>>>> origin/main
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"

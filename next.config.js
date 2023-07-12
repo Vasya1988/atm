@@ -12,6 +12,6 @@ const nextConfig = {
     //   },
 //     basePath: '/atm',
 //     assetPrefix: `/atm/`
-// }
+}
 
 module.exports = nextConfig
