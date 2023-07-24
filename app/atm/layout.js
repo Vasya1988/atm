@@ -1,7 +1,6 @@
 import classes from './Atm.module.sass'
 import Navigation from '@/components/navigation/Navigation'
 
-
 const NavItems = [
     {label: 'Cash', href: '/atm/cash'},
     {label: 'Setup', href: '/atm/setup'},
