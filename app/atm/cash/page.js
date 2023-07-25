@@ -13,6 +13,8 @@ const digitsValidate = (prop) => {
 const Main = (props) => {
     const [getCash, setGetCash] = useState('')
 
+    const [takeCash, setTakeCash] = useState(null)
+
     const [stateBanknote, setStateBanknote] = useState([])
     // ---------------------------- Вычисление ---------------------------- //
     const getMoney = (amount, 
@@ -25,6 +27,8 @@ const Main = (props) => {
             {banknote: 10, amount: 4, status: 'ready'}
         ]
     ) => {
+
+        let showBanknoteOnScreen = {}
 
         // Сюда возвращаем полученный результат
         let result = []
@@ -41,6 +45,7 @@ const Main = (props) => {
         let checkAmount = Number(String(amount).split('').pop());
 
         // Получаем общую сумму денег в банкомате
+        // Для проверки наличия нужной суммы в банкомате
         banknotes.map((num) => {totalSum = totalSum + num.banknote * num.amount});
 
         // Проверка на корретный ввод суммы
@@ -66,7 +71,11 @@ const Main = (props) => {
                     } else {
                         currentAmount = currentAmount - num.banknote
                         result.push(num.banknote)
+                        
                         amountBanknote = amountBanknote - 1
+
+                        showBanknoteOnScreen[num.banknote] = num.amount - amountBanknote
+
                         amountBanknote === 0 ? num.status = 'Неисправен' : true
                     }
                 }
@@ -78,7 +87,7 @@ const Main = (props) => {
 
         // Вот с этой проверкой немного застопорился. 
         // Тут нужно выдать ответ на случай, если в банкомате есть только банкнота в 500, а снимают 200
-        console.log(result)
+        // console.log(result)
         if (result.length === 0) {
             if (result != amount) {
                 console.log('Нет таких банкнот')
@@ -104,15 +113,23 @@ const Main = (props) => {
                     stateBanknote.push([index].amount = el.amount)
                     stateBanknote.push([index].status = el.status)
                 }), 
-                three: console.log('Выходные данные --> ', banknotes)
+                // three: console.log('Выходные данные --> ', banknotes)
             }
         }
+        // console.log('this result --> ', result)
+        setTakeCash(showBanknoteOnScreen)
 
-        return result
+        // return result
+        return showBanknoteOnScreen
 
     }
     // ---------------------------- Вычисление // ---------------------------- //
-    console.log(getMoney(450))
+    // console.log(Object.keys(getMoney(450)))
+    if (takeCash != null) {
+        Object.keys(takeCash).map(e => {
+            console.log(e, takeCash[e])
+        })
+    }
 
     return (
         <div 
@@ -125,7 +142,7 @@ const Main = (props) => {
                     style={{textAlign: 'center'}}
                     onSubmit={(cash) => {
                         cash.preventDefault()
-                        !Number(cash.target[0].value) ? (alert('Введите цифры'), cash.target[0].value='', setGetCash('')) : setGetCash(`${cash.target[0].value} $`)
+                        !Number(cash.target[0].value) ? (alert('Введите цифры'), cash.target[0].value='', setGetCash('')) : (setGetCash(`${cash.target[0].value}`), getMoney(cash.target[0].value))
                         
                     }}
                 >
@@ -136,7 +153,7 @@ const Main = (props) => {
                     />
                 </form>
                 <span className={classes.result}>
-                    got: {`${getCash}`}<br/>
+                    got: {`${getCash} $`}<br/>
                     <br/>
                     1000: 2<br/>
                     500: 1<br/>
