@@ -16,6 +16,15 @@ const Main = (props) => {
     const [takeCash, setTakeCash] = useState(null)
 
     const [stateBanknote, setStateBanknote] = useState([])
+
+    const buttonSumValue = ['10$', '20$', '50$', '100$', '500$', '1000$', 'Settings', 'Other sum']
+
+    const showCash = getCash != '' && takeCash != null
+        ? Object.keys(takeCash).reverse().map(e => {
+            // console.log(`${e}: ${takeCash[e]}`)
+            return <span data-show key={e}>{e}$: {takeCash[e]}<br/></span>
+        })
+        : ''
     // ---------------------------- Вычисление ---------------------------- //
     const getMoney = (amount, 
         banknotes = [
@@ -56,7 +65,9 @@ const Main = (props) => {
         // Проверка наличия запрашиваемой суммы
         else if (totalSum < amount) {
             console.log('В банкомате недостаточно денег', totalSum)
-            return 'В банкомате недостаточно денег'
+            alert(`В банкомате недостаточно денег — ${totalSum}$`)
+            setGetCash('')
+            return false
         } 
         // Вычислением нужных купюр для выдачи
         else {
@@ -91,6 +102,7 @@ const Main = (props) => {
         if (result.length === 0) {
             if (result != amount) {
                 console.log('Нет таких банкнот')
+                alert('Нет таких банкнот')
                 console.log('Выходные данные --> ', banknotes)
                 return result = 'Нехватает нужных банкнот. Выберите другую сумму'
             } else {
@@ -125,11 +137,7 @@ const Main = (props) => {
     }
     // ---------------------------- Вычисление // ---------------------------- //
     // console.log(Object.keys(getMoney(450)))
-    if (takeCash != null) {
-        Object.keys(takeCash).map(e => {
-            console.log(e, takeCash[e])
-        })
-    }
+    
 
     return (
         <div 
@@ -142,8 +150,16 @@ const Main = (props) => {
                     style={{textAlign: 'center'}}
                     onSubmit={(cash) => {
                         cash.preventDefault()
-                        !Number(cash.target[0].value) ? (alert('Введите цифры'), cash.target[0].value='', setGetCash('')) : (setGetCash(`${cash.target[0].value}`), getMoney(cash.target[0].value))
-                        
+                        !Number(cash.target[0].value) 
+                            ? (
+                                alert('Введите цифры'), cash.target[0].value='', 
+                                setGetCash('')
+                            ) 
+                            : (
+                                !getMoney(cash.target[0].value) 
+                                    ? cash.target[0].value='' 
+                                    : setGetCash(`Got: ${cash.target[0].value}$`)
+                            )
                     }}
                 >
                     <input 
@@ -153,21 +169,17 @@ const Main = (props) => {
                     />
                 </form>
                 <span className={classes.result}>
-                    got: {`${getCash} $`}<br/>
+                    {`${getCash}`}<br/>
                     <br/>
-                    1000: 2<br/>
-                    500: 1<br/>
-                    100: 2
+                    {showCash}
                 </span>
             </div>
-            <CashButton dataName='10' sum='10$' />
-            <CashButton dataName='20' sum='20$' />
-            <CashButton dataName='50' sum='50$' />
-            <CashButton dataName='100' sum='100$' />
-            <CashButton dataName='500' sum='500%' />
-            <CashButton dataName='1000' sum='1000%' />
-            <CashButton dataName='settings' sum='Settings' />
-            <CashButton dataName='other' sum='Other sum' />
+            {buttonSumValue.map(banknote => <CashButton 
+                key={banknote} 
+                dataName={banknote.replace('$', '')} 
+                sum={`${banknote}`} 
+                
+            />)}
         </div>
     )
 }
