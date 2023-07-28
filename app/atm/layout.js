@@ -7,6 +7,8 @@ const NavItems = [
     {label: 'Back', href: '/'}
 ]
 
+const digitsBlock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'Enter', 0, 'Cancel']
+
 const AtmLayout = ({children}) => {
     return (
         <div className={classes.Atm} >
@@ -15,18 +17,19 @@ const AtmLayout = ({children}) => {
                 <main>{children}</main>
             </div>
             <div className={classes.digits}>
-                <button className={classes.digit} data-digit='1' >1</button>
-                <button className={classes.digit} data-digit='2' >2</button>
-                <button className={classes.digit} data-digit='3' >3</button>
-                <button className={classes.digit} data-digit='4' >4</button>
-                <button className={classes.digit} data-digit='5' >5</button>
-                <button className={classes.digit} data-digit='6' >6</button>
-                <button className={classes.digit} data-digit='7' >7</button>
-                <button className={classes.digit} data-digit='8' >8</button>
-                <button className={classes.digit} data-digit='9' >9</button>
-                <button className={classes.digit} data-enter='enter' style={{backgroundColor: 'var(--greenButton)', color: '#fff', fontWeight: 'normal'}}>Enter</button>
-                <button className={classes.digit} data-digit='0' >0</button>
-                <button style={{backgroundColor: '#efa43d', color: '#fff', fontWeight: 'normal'}} className={classes.digit} data-cancel='cancel' >Cancel</button>
+                {
+                    digitsBlock.map(e => 
+                        e === 'Enter'? 
+
+                            <button className={classes.digit} style={{backgroundColor: 'var(--greenButton)', color: '#fff', fontWeight: 'normal'}} data-digit={e} >{e}</button>
+
+                        : e === 'Cancel'? 
+                        
+                            <button className={classes.digit} style={{backgroundColor: '#efa43d', color: '#fff', fontWeight: 'normal'}} data-digit={e} >{e}</button>
+
+                        : <button className={classes.digit} data-digit={e} >{e}</button>
+                    )
+                }
                 <div className={classes.moneyOut} ></div>
             </div>
         </div>

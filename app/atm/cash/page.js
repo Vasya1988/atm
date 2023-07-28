@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import classes from './main.module.sass'
 import CashButton from '@/components/cashButton/CashButton'
+import Title from '@/components/title/Title'
+
 
 const digitsValidate = (prop) => {
     console.log(!Number(prop))
@@ -25,6 +27,20 @@ const Main = (props) => {
             return <span data-show key={e}>{e}$: {takeCash[e]}<br/></span>
         })
         : ''
+
+    let [totalSumOfClick, setTotalSumOfClick] = useState(0)
+
+    
+    const onClickHandle = (event) => {
+        const sumOfDollars = event.currentTarget.dataset.cash
+        console.log(sumOfDollars)
+        sumOfDollars === 'Other sum' ?
+            setTotalSumOfClick(0)
+        : sumOfDollars === 'Settings' ?
+            setTotalSumOfClick(0)
+        : setTotalSumOfClick(totalSumOfClick + Number(sumOfDollars))
+    }
+
     // ---------------------------- Вычисление ---------------------------- //
     const getMoney = (amount, 
         banknotes = [
@@ -140,47 +156,52 @@ const Main = (props) => {
     
 
     return (
-        <div 
-            className={classes.MainScreen}
-        >
-            <div
-                className={classes.Enter}
+        <>
+            <Title tag='h2' text={totalSumOfClick != 0 ? totalSumOfClick : ''} />
+            <div 
+                className={classes.MainScreen}
             >
-                <form
-                    style={{textAlign: 'center'}}
-                    onSubmit={(cash) => {
-                        cash.preventDefault()
-                        !Number(cash.target[0].value) 
-                            ? (
-                                alert('Введите цифры'), cash.target[0].value='', 
-                                setGetCash('')
-                            ) 
-                            : (
-                                !getMoney(cash.target[0].value) 
-                                    ? cash.target[0].value='' 
-                                    : setGetCash(`Got: ${cash.target[0].value}$`)
-                            )
-                    }}
-                >
-                    <input 
-                        data-enter='enter' 
-                        type='text'
-                        placeholder='Enter your sum'
-                    />
-                </form>
-                <span className={classes.result}>
-                    {`${getCash}`}<br/>
-                    <br/>
-                    {showCash}
-                </span>
-            </div>
-            {buttonSumValue.map(banknote => <CashButton 
-                key={banknote} 
-                dataName={banknote.replace('$', '')} 
-                sum={`${banknote}`} 
                 
-            />)}
-        </div>
+                <div
+                    className={classes.Enter}
+                >
+                    <form
+                        style={{textAlign: 'center'}}
+                        onSubmit={(cash) => {
+                            cash.preventDefault()
+                            !Number(cash.target[0].value) 
+                                ? (
+                                    alert('Введите цифры'), cash.target[0].value='', 
+                                    setGetCash('')
+                                ) 
+                                : (
+                                    !getMoney(cash.target[0].value) 
+                                        ? cash.target[0].value='' 
+                                        : setGetCash(`Got: ${cash.target[0].value}$`)
+                                )
+                        }}
+                    >
+                        <input 
+                            data-enter='enter' 
+                            type='text'
+                            placeholder='Enter your sum'
+                            onChange={e => setTotalSumOfClick(e.target.value)}
+                        />
+                    </form>
+                    <span className={classes.result}>
+                        {`${getCash}`}<br/>
+                        <br/>
+                        {showCash}
+                    </span>
+                </div>
+                {buttonSumValue.map(banknote => <CashButton
+                    clickHandle={onClickHandle}
+                    key={banknote} 
+                    dataName={banknote.replace('$', '')} 
+                    sum={`${banknote}`}
+                />)}
+            </div>
+        </>
     )
 }
 

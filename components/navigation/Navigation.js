@@ -2,15 +2,11 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import classes from './Navigation.module.sass'
-import { useEffect, useState } from "react"
-import Title from "../title/Title"
 
 const Navigation = (props) => {
 
-    const [myText, setMyText] = useState(null)
-
     const pathName = usePathname()
-
+    
     return (
         <>
             <nav className={classes.Navigate}>
@@ -31,7 +27,6 @@ const Navigation = (props) => {
                     })
                 }
             </nav>
-            <Title tag='h2' text={myText} />
         </>
     )
 }

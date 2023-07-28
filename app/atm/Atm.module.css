@@ -25,6 +25,8 @@
       width: 100%;
       flex-wrap: wrap;
       align-items: center; } }
+  .Atm main {
+    display: inherit; }
   .Atm .atmScreen {
     display: grid;
     grid-template-rows: max-content;
