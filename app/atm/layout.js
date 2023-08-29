@@ -1,5 +1,9 @@
+'use client'
 import classes from './Atm.module.sass'
 import Navigation from '@/components/navigation/Navigation'
+import DigitsBlock from '@/components/digitsBlock/DigitsBlock'
+import { useState } from 'react'
+import { GlobalContextProvider } from '../Context/context'
 
 const NavItems = [
     {label: 'Cash', href: '/atm/cash'},
@@ -7,9 +11,8 @@ const NavItems = [
     {label: 'Back', href: '/'}
 ]
 
-const digitsBlock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'Enter', 0, 'Cancel']
-
 const AtmLayout = ({children}) => {
+
     return (
         <div className={classes.Atm} >
             <div className={classes.atmScreen}>
@@ -18,17 +21,7 @@ const AtmLayout = ({children}) => {
             </div>
             <div className={classes.digits}>
                 {
-                    digitsBlock.map(e => 
-                        e === 'Enter'? 
-
-                            <button className={classes.digit} style={{backgroundColor: 'var(--greenButton)', color: '#fff', fontWeight: 'normal'}} data-digit={e} >{e}</button>
-
-                        : e === 'Cancel'? 
-                        
-                            <button className={classes.digit} style={{backgroundColor: '#efa43d', color: '#fff', fontWeight: 'normal'}} data-digit={e} >{e}</button>
-
-                        : <button className={classes.digit} data-digit={e} >{e}</button>
-                    )
+                    <DigitsBlock classes={classes.digit}/>
                 }
                 <div className={classes.moneyOut} ></div>
             </div>

@@ -1,8 +1,9 @@
 'use client'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import classes from './main.module.sass'
 import CashButton from '@/components/cashButton/CashButton'
 import Title from '@/components/title/Title'
+import MyContext, { useGlobalContext } from '../../Context/context'
 
 
 const digitsValidate = (prop) => {
@@ -10,14 +11,15 @@ const digitsValidate = (prop) => {
     return Number(prop)
 }
 
-
-
 const Main = (props) => {
-    const [getCash, setGetCash] = useState('')
 
-    const [takeCash, setTakeCash] = useState(null)
+    const { takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getCash, setGetCash, getMoney, stateBanknote, setStateBanknote } = useGlobalContext()
 
-    const [stateBanknote, setStateBanknote] = useState([])
+    
+
+    // const [takeCash, setTakeCash] = useState(null)
+
+    
 
     const buttonSumValue = ['10$', '20$', '50$', '100$', '500$', '1000$', 'Settings', 'Other sum']
 
@@ -27,131 +29,26 @@ const Main = (props) => {
             return <span data-show key={e}>{e}$: {takeCash[e]}<br/></span>
         })
         : ''
-
-    let [totalSumOfClick, setTotalSumOfClick] = useState(0)
-
     
     const onClickHandle = (event) => {
         const sumOfDollars = event.currentTarget.dataset.cash
         console.log(sumOfDollars)
+
         sumOfDollars === 'Other sum' ?
-            setTotalSumOfClick(0)
+            (setTotalSumOfClick(0),
+            document.querySelector('[data-enter="enter"]').value = '')
         : sumOfDollars === 'Settings' ?
-            setTotalSumOfClick(0)
-        : setTotalSumOfClick(totalSumOfClick + Number(sumOfDollars))
+            (setTotalSumOfClick(0),
+            document.querySelector('[data-enter="enter"]').value = '')
+        : (document.querySelector('[data-enter="enter"]').value = '',
+            setTotalSumOfClick(Number(totalSumOfClick) + Number(sumOfDollars))
+        )
     }
 
-    // ---------------------------- Вычисление ---------------------------- //
-    const getMoney = (amount, 
-        banknotes = [
-            {banknote: 1000, amount: 4, status: 'ready'},
-            {banknote: 500, amount: 4, status: 'ready'},
-            {banknote: 100, amount: 4, status: 'ready'},
-            {banknote: 50, amount: 4, status: 'ready'},
-            {banknote: 20, amount: 4, status: 'ready'},
-            {banknote: 10, amount: 4, status: 'ready'}
-        ]
-    ) => {
-
-        let showBanknoteOnScreen = {}
-
-        // Сюда возвращаем полученный результат
-        let result = []
-
-        const currentBanknotes = []
-        banknotes.map(el => currentBanknotes.push(
-            {banknote: el.banknote, amount: el.amount, status: el.status}
-        ))
-
-        let currentAmount = amount
-        let totalSum = 0
-
-        // Получаем последнее число вводимой суммы
-        let checkAmount = Number(String(amount).split('').pop());
-
-        // Получаем общую сумму денег в банкомате
-        // Для проверки наличия нужной суммы в банкомате
-        banknotes.map((num) => {totalSum = totalSum + num.banknote * num.amount});
-
-        // Проверка на корретный ввод суммы
-        if (checkAmount != 0) {
-            console.log('Введите корретную сумму')
-            return false
-        }
-        // Проверка наличия запрашиваемой суммы
-        else if (totalSum < amount) {
-            console.log('В банкомате недостаточно денег', totalSum)
-            alert(`В банкомате недостаточно денег — ${totalSum}$`)
-            setGetCash('')
-            return false
-        } 
-        // Вычислением нужных купюр для выдачи
-        else {
-            currentBanknotes.map((num, i) => {
-                let amountBanknote = num.amount;
-                while (currentAmount >= num.banknote) {
-
-                    if (amountBanknote === 0) {
-                        num.status = 'Неисправен'
-                        break
-
-                    } else {
-                        currentAmount = currentAmount - num.banknote
-                        result.push(num.banknote)
-                        
-                        amountBanknote = amountBanknote - 1
-
-                        showBanknoteOnScreen[num.banknote] = num.amount - amountBanknote
-
-                        amountBanknote === 0 ? num.status = 'Неисправен' : true
-                    }
-                }
-                // Запись текущего кол-ва банкнот
-                num.amount = amountBanknote
-                // console.log(`Current amount of banknote ${num.banknote}--> `, num.amount)
-            })
-        }
-
-        // Вот с этой проверкой немного застопорился. 
-        // Тут нужно выдать ответ на случай, если в банкомате есть только банкнота в 500, а снимают 200
-        // console.log(result)
-        if (result.length === 0) {
-            if (result != amount) {
-                console.log('Нет таких банкнот')
-                alert('Нет таких банкнот')
-                console.log('Выходные данные --> ', banknotes)
-                return result = 'Нехватает нужных банкнот. Выберите другую сумму'
-            } else {
-                result.join(', ')
-                currentBanknotes.map((el, index) => {
-                    stateBanknote[index].amount = el.amount
-                    stateBanknote[index].status = el.status
-                })
-            }
-        } else {
-            result.reduce((a=0, b=0) => a + b) != amount ? 
-            {
-                one: console.log('Нет таких банкнот'), 
-                three: console.log('Выходные данные --> ', banknotes), 
-                two: result = 'Нехватает нужных банкнот. Выберите другую сумму', 
-            }
-            : {
-                one: result.join(', '), 
-                two: currentBanknotes.map((el, index) => {
-                    stateBanknote.push([index].amount = el.amount)
-                    stateBanknote.push([index].status = el.status)
-                }), 
-                // three: console.log('Выходные данные --> ', banknotes)
-            }
-        }
-        // console.log('this result --> ', result)
-        setTakeCash(showBanknoteOnScreen)
-
-        // return result
-        return showBanknoteOnScreen
-
-    }
-    // ---------------------------- Вычисление // ---------------------------- //
+   
+    !totalSumOfClick === 0 
+        ? getMoney(totalSumOfClick)
+        : true
     // console.log(Object.keys(getMoney(450)))
     
 
@@ -177,7 +74,7 @@ const Main = (props) => {
                                 : (
                                     !getMoney(cash.target[0].value) 
                                         ? cash.target[0].value='' 
-                                        : setGetCash(`Got: ${cash.target[0].value}$`)
+                                        : (setGetCash(`Got: ${cash.target[0].value}$`), cash.target[0].value='')
                                 )
                         }}
                     >

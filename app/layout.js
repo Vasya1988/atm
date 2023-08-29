@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Atm from './atm/page'
 import classes from './page.module.sass'
+import { GlobalContextProvider } from './Context/context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className={classes.main}>{children}</main>
+        <GlobalContextProvider>
+          <main className={classes.main}>{children}</main>
+        </GlobalContextProvider>
+        
       </body>
     </html>
   )

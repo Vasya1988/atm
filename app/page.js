@@ -6,8 +6,6 @@ export default function Home({children}) {
   const elemenstOnPage = {
     dataCash: 'data-cash'
   }
-  console.log('ddddd')
-  
   
   const mainState = {}
 
