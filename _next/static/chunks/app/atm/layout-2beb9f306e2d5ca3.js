@@ -1,9 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[941],{1253:function(e,t,n){Promise.resolve().then(n.bind(n,629)),Promise.resolve().then(n.t.bind(n,9713,23))},629:function(e,t,n){"use strict";n.r(t);var r=n(9268),a=n(5846),i=n.n(a),_=n(6008),o=n(5260),s=n.n(o);t.default=e=>{let t=(0,_.usePathname)();return(0,r.jsx)(r.Fragment,{children:(0,r.jsx)("nav",{className:s().Navigate,children:e.navLinks.map(e=>{let n=t.split("/"),a=e.label.toLowerCase()===n[n.length-1];return(0,r.jsx)(i(),{href:e.href,className:a?s().active:"",children:e.label},e.label)})})})}},9713:function(e){e.exports={Atm:"Atm_Atm__R4PpR",atmScreen:"Atm_atmScreen__Oh3J_",Navigate:"Atm_Navigate__OjmYC",digits:"Atm_digits__T4a2K",digit:"Atm_digit__9AiOS",moneyOut:"Atm_moneyOut__mR2WM"}},5260:function(e){e.exports={Navigate:"Navigation_Navigate__mAlYJ",active:"Navigation_active__560Sa"}},3177:function(e,t,n){"use strict";/**
- * @license React
- * react-jsx-runtime.production.min.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */var r=n(6006),a=Symbol.for("react.element"),i=Symbol.for("react.fragment"),_=Object.prototype.hasOwnProperty,o=r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,s={key:!0,ref:!0,__self:!0,__source:!0};function c(e,t,n){var r,i={},c=null,l=null;for(r in void 0!==n&&(c=""+n),void 0!==t.key&&(c=""+t.key),void 0!==t.ref&&(l=t.ref),t)_.call(t,r)&&!s.hasOwnProperty(r)&&(i[r]=t[r]);if(e&&e.defaultProps)for(r in t=e.defaultProps)void 0===i[r]&&(i[r]=t[r]);return{$$typeof:a,type:e,key:c,ref:l,props:i,_owner:o.current}}t.Fragment=i,t.jsx=c,t.jsxs=c},9268:function(e,t,n){"use strict";e.exports=n(3177)},5846:function(e,t,n){e.exports=n(7477)},6008:function(e,t,n){e.exports=n(794)}},function(e){e.O(0,[477,253,769,744],function(){return e(e.s=1253)}),_N_E=e.O()}]);
