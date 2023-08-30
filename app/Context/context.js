@@ -22,12 +22,9 @@ export const GlobalContextProvider = ({children}) => {
     const [tapPadSum, setTapPadSum] = useState()
     const [totalSumOfClick, setTotalSumOfClick] = useState(0)
     const [getCash, setGetCash] = useState('')
-    const test = () => {
-        console.log('it`s work!')
-    }
     const [stateBanknote, setStateBanknote] = useState([])
      // ---------------------------- Вычисление ---------------------------- //
-     const getMoney = (amount, 
+    const getMoney = (amount, 
         banknotes = [
             {banknote: 1000, amount: 4, status: 'ready'},
             {banknote: 500, amount: 4, status: 'ready'},
@@ -140,7 +137,7 @@ export const GlobalContextProvider = ({children}) => {
 
 
     return (
-        <GlobalContext.Provider value={{data, setData, takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getCash, setGetCash, getMoney}} >
+        <GlobalContext.Provider value={{data, setData, takeCash, setTakeCash, totalSumOfClick, setStateBanknote, setTotalSumOfClick, getCash, setGetCash, getMoney}} >
             {children}
         </GlobalContext.Provider>
     )

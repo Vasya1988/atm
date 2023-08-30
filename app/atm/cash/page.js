@@ -15,11 +15,7 @@ const Main = (props) => {
 
     const { takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getCash, setGetCash, getMoney, stateBanknote, setStateBanknote } = useGlobalContext()
 
-    
-
     // const [takeCash, setTakeCash] = useState(null)
-
-    
 
     const buttonSumValue = ['10$', '20$', '50$', '100$', '500$', '1000$', 'Settings', 'Other sum']
 
@@ -74,7 +70,7 @@ const Main = (props) => {
                                 : (
                                     !getMoney(cash.target[0].value) 
                                         ? cash.target[0].value='' 
-                                        : (setGetCash(`Got: ${cash.target[0].value}$`), cash.target[0].value='')
+                                        : (setGetCash(`Got: ${cash.target[0].value}$`), console.log(cash.target[0].value), cash.target[0].value='')
                                 )
                         }}
                     >

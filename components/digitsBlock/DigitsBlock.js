@@ -7,14 +7,19 @@ const digitsBlock = (props) => {
 
     const digitsBlock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'Enter', 0, 'Cancel']
 
-    const {data, setData, takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick} = useGlobalContext();
+    const {data, setData, takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getMoney, getCash, setGetCash} = useGlobalContext();
     
     return (
         digitsBlock.map((e, keys) => 
             e === 'Enter'? 
 
                 <button 
-
+                    onClick={() => {
+                        getMoney(totalSumOfClick)
+                        console.log(getCash)
+                        setGetCash(`Got: ${totalSumOfClick}$`)
+                        setTotalSumOfClick('')
+                    }}
                     key={keys}
                     className={props.classes} 
                     style={{backgroundColor: 'var(--greenButton)', color: '#fff', fontWeight: 'normal'}} 
@@ -25,6 +30,7 @@ const digitsBlock = (props) => {
             : e === 'Cancel'? 
             
                 <button 
+                    onClick={() => setTotalSumOfClick('')}
                     key={keys}
                     className={props.classes} 
                     style={{backgroundColor: '#efa43d', color: '#fff', fontWeight: 'normal'}} 
