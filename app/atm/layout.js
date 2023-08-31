@@ -2,13 +2,11 @@
 import classes from './Atm.module.sass'
 import Navigation from '@/components/navigation/Navigation'
 import DigitsBlock from '@/components/digitsBlock/DigitsBlock'
-import { useState } from 'react'
-import { GlobalContextProvider } from '../Context/context'
 
 const NavItems = [
     {label: 'Cash', href: '/atm/cash'},
     {label: 'Setup', href: '/atm/setup'},
-    {label: 'Back', href: '/'}
+    {label: 'Back', href: './'}
 ]
 
 const AtmLayout = ({children}) => {

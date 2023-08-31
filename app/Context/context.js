@@ -26,12 +26,12 @@ export const GlobalContextProvider = ({children}) => {
      // ---------------------------- Вычисление ---------------------------- //
     const getMoney = (amount, 
         banknotes = [
-            {banknote: 1000, amount: 4, status: 'ready'},
-            {banknote: 500, amount: 4, status: 'ready'},
-            {banknote: 100, amount: 4, status: 'ready'},
-            {banknote: 50, amount: 4, status: 'ready'},
-            {banknote: 20, amount: 4, status: 'ready'},
-            {banknote: 10, amount: 4, status: 'ready'}
+            {banknote: 1000, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+            {banknote: 500, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+            {banknote: 100, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+            {banknote: 50, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+            {banknote: 20, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+            {banknote: 10, amount: Math.floor(Math.random(1)*20), status: 'ready'}
         ]
     ) => {
 

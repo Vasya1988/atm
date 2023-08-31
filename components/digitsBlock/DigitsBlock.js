@@ -30,7 +30,7 @@ const digitsBlock = (props) => {
             : e === 'Cancel'? 
             
                 <button 
-                    onClick={() => setTotalSumOfClick('')}
+                    onClick={() => (setTotalSumOfClick(''), setGetCash(``))}
                     key={keys}
                     className={props.classes} 
                     style={{backgroundColor: '#efa43d', color: '#fff', fontWeight: 'normal'}} 
