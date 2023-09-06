@@ -13,11 +13,9 @@ const digitsValidate = (prop) => {
 
 const Main = (props) => {
 
-    const { takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getCash, setGetCash, getMoney, stateBanknote, setStateBanknote } = useGlobalContext()
+    const { stateBanknote, takeCash, totalSumOfClick, setTotalSumOfClick, getCash, setGetCash, getMoney, buttonSumValue } = useGlobalContext()
 
     // const [takeCash, setTakeCash] = useState(null)
-
-    const buttonSumValue = ['10$', '20$', '50$', '100$', '500$', '1000$', 'Settings', 'Other sum']
 
     const showCash = getCash != '' && takeCash != null
         ? Object.keys(takeCash).reverse().map(e => {
@@ -46,6 +44,7 @@ const Main = (props) => {
         ? getMoney(totalSumOfClick)
         : true
     // console.log(Object.keys(getMoney(450)))
+    console.log(stateBanknote)
     
 
     return (

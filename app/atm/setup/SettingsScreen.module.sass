@@ -1,0 +1,30 @@
+.Setup
+    display: grid
+.SetupOptions
+    grid-row-start: 2
+    grid-row-end: 5
+    padding: 0 20px
+    box-sizing: border-box
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    align-items: center
+    align-content: space-around
+    grid-gap: 0 40px
+    input
+        width: 30%
+        border: none
+        border-bottom: 1px solid lightgrey
+        text-align: center
+    input:focus-visible
+        outline: none
+        background-color: lightgray
+    .Number 
+        display: flex
+        justify-content: space-evenly
+    button
+        padding: 4px 18px
+        box-sizing: border-box
+        background-color: var(--greenButton)
+        border: none
+        border-radius: 6px
+        color: #fff

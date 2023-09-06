@@ -23,6 +23,7 @@ export const GlobalContextProvider = ({children}) => {
     const [totalSumOfClick, setTotalSumOfClick] = useState(0)
     const [getCash, setGetCash] = useState('')
     const [stateBanknote, setStateBanknote] = useState([])
+    const buttonSumValue = ['10$', '20$', '50$', '100$', '500$', '1000$', 'Settings', 'Other sum']
      // ---------------------------- Вычисление ---------------------------- //
     const getMoney = (amount, 
         banknotes = [
@@ -112,19 +113,20 @@ export const GlobalContextProvider = ({children}) => {
             }
         } else {
             result.reduce((a=0, b=0) => a + b) != amount ? 
-            {
-                one: console.log('Нет таких банкнот'), 
-                three: console.log('Выходные данные --> ', banknotes), 
-                two: result = 'Нехватает нужных банкнот. Выберите другую сумму', 
-            }
-            : {
-                one: result.join(', '), 
-                two: currentBanknotes.map((el, index) => {
-                    stateBanknote.push([index].amount = el.amount)
-                    stateBanknote.push([index].status = el.status)
+                (
+                    console.log('Нет таких банкнот'),
+                    console.log('Выходные данные --> ', banknotes), 
+                    result = 'Нехватает нужных банкнот. Выберите другую сумму'
+                )
+            
+            : (
+                result.join(', '), 
+                currentBanknotes.map((el, index) => {
+                stateBanknote.push([index].amount = el.amount)
+                stateBanknote.push([index].status = el.status)
                 }), 
                 // three: console.log('Выходные данные --> ', banknotes)
-            }
+            )
         }
         // console.log('this result --> ', result)
         setTakeCash(showBanknoteOnScreen)
@@ -137,7 +139,7 @@ export const GlobalContextProvider = ({children}) => {
 
 
     return (
-        <GlobalContext.Provider value={{data, setData, takeCash, setTakeCash, totalSumOfClick, setStateBanknote, setTotalSumOfClick, getCash, setGetCash, getMoney}} >
+        <GlobalContext.Provider value={{data, setData, takeCash, setTakeCash, totalSumOfClick, stateBanknote, setStateBanknote, setTotalSumOfClick, getCash, setGetCash, getMoney, buttonSumValue}} >
             {children}
         </GlobalContext.Provider>
     )

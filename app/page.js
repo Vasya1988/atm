@@ -31,5 +31,3 @@ export default function Home({children}) {
     </>
   )
 }
-
-// +7 968 684-29-76

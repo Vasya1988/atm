@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,aAAa;EACT,OAAO,EAAE,MAAM;EACf,UAAU,EAAE,UAAU;EACtB,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAc;EACrC,WAAW,EAAE,MAAM;EACnB,aAAa,EAAE,YAAY;EAC3B,QAAQ,EAAE,MAAM;EAChB,mBAAK;IACD,KAAK,EAAE,GAAG;EACd,qBAAO;IACH,OAAO,EAAE,IAAI;IACb,eAAe,EAAE,aAAa",
+"sources": ["SettingsScreen.module.sass"],
 "names": [],
 "file": "SettingsScreen.module.css"
 }

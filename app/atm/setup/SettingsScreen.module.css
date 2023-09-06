@@ -1,3 +1,15 @@
-
+.SetupOptions {
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  align-content: space-around;
+  grid-gap: 0 40px; }
+  .SetupOptions input {
+    width: 30%; }
+  .SetupOptions .Number {
+    display: flex;
+    justify-content: space-between; }
 
 /*# sourceMappingURL=SettingsScreen.module.css.map */
