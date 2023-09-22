@@ -10,8 +10,8 @@ const nextConfig = {
     //     loader: 'custom',
     //     loaderFile: './app/image.ts',
     //   },
-    // basePath: '/atm',
-    // assetPrefix: `/atm/`
+    basePath: '/atm',
+    assetPrefix: `/atm/`
 }
 
 module.exports = nextConfig
