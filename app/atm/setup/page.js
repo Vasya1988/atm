@@ -23,11 +23,21 @@ const Setup = (props) => {
                                 {
                                     banknote: Number(e.replace('$', '')), 
                                     amount: Number(digit.target.value), 
-                                    status: 'Исправен'
+                                    status: 'Ready'
                                 })} placeholder="Enter" type="text"></input>
                             <button
                                 onClick={(e) => {
-                                    setStateBanknote([...stateBanknote, sum])
+                                    setStateBanknote(
+                                        stateBanknote.map(e => {
+                                            console.log(e, sum)
+                                            if (e.banknote === sum.banknote) {
+                                                return sum
+                                            } else {
+                                                return e
+                                            }
+                                                
+                                        })
+                                    )
                                 }}
                             >
                                 Add

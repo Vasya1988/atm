@@ -41,10 +41,10 @@ const Main = (props) => {
 
    
     !totalSumOfClick === 0 
-        ? getMoney(totalSumOfClick)
+        ? getMoney(totalSumOfClick, stateBanknote)
         : true
     // console.log(Object.keys(getMoney(450)))
-    console.log(stateBanknote)
+    console.log('from cash --> ', stateBanknote)
     
 
     return (
@@ -67,7 +67,7 @@ const Main = (props) => {
                                     setGetCash('')
                                 ) 
                                 : (
-                                    !getMoney(cash.target[0].value) 
+                                    !getMoney(cash.target[0].value, stateBanknote) 
                                         ? cash.target[0].value='' 
                                         : (setGetCash(`Got: ${cash.target[0].value}$`), console.log(cash.target[0].value), cash.target[0].value='')
                                 )

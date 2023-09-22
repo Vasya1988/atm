@@ -22,19 +22,26 @@ export const GlobalContextProvider = ({children}) => {
     const [tapPadSum, setTapPadSum] = useState()
     const [totalSumOfClick, setTotalSumOfClick] = useState(0)
     const [getCash, setGetCash] = useState('')
-    const [stateBanknote, setStateBanknote] = useState([])
+    const [stateBanknote, setStateBanknote] = useState([
+        {banknote: 1000, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        {banknote: 500, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        {banknote: 100, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        {banknote: 50, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        {banknote: 20, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        {banknote: 10, amount: Math.floor(Math.random(1)*20), status: 'ready'}
+    ])
     const buttonSumValue = ['10$', '20$', '50$', '100$', '500$', '1000$', 'Settings', 'Other sum']
      // ---------------------------- Вычисление ---------------------------- //
-    const getMoney = (amount, 
-        banknotes = [
-            {banknote: 1000, amount: Math.floor(Math.random(1)*20), status: 'ready'},
-            {banknote: 500, amount: Math.floor(Math.random(1)*20), status: 'ready'},
-            {banknote: 100, amount: Math.floor(Math.random(1)*20), status: 'ready'},
-            {banknote: 50, amount: Math.floor(Math.random(1)*20), status: 'ready'},
-            {banknote: 20, amount: Math.floor(Math.random(1)*20), status: 'ready'},
-            {banknote: 10, amount: Math.floor(Math.random(1)*20), status: 'ready'}
-        ]
-    ) => {
+    const getMoney = (amount, banknotes) => {
+
+        // banknotes = [
+        //     {banknote: 1000, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        //     {banknote: 500, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        //     {banknote: 100, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        //     {banknote: 50, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        //     {banknote: 20, amount: Math.floor(Math.random(1)*20), status: 'ready'},
+        //     {banknote: 10, amount: Math.floor(Math.random(1)*20), status: 'ready'}
+        // ]
 
         let showBanknoteOnScreen = {}
 
@@ -122,9 +129,9 @@ export const GlobalContextProvider = ({children}) => {
             : (
                 result.join(', '), 
                 currentBanknotes.map((el, index) => {
-                stateBanknote.push([index].amount = el.amount)
-                stateBanknote.push([index].status = el.status)
-                }), 
+                stateBanknote[index].amount = el.amount
+                stateBanknote[index].status = el.status
+                })
                 // three: console.log('Выходные данные --> ', banknotes)
             )
         }

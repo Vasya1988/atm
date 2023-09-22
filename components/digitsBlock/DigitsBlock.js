@@ -7,7 +7,7 @@ const digitsBlock = (props) => {
 
     const digitsBlock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'Enter', 0, 'Cancel']
 
-    const {data, setData, takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getMoney, getCash, setGetCash} = useGlobalContext();
+    const {stateBanknote, data, setData, takeCash, setTakeCash, totalSumOfClick, setTotalSumOfClick, getMoney, getCash, setGetCash} = useGlobalContext();
     
     return (
         digitsBlock.map((e, keys) => 
@@ -15,7 +15,7 @@ const digitsBlock = (props) => {
 
                 <button 
                     onClick={() => {
-                        getMoney(totalSumOfClick)
+                        getMoney(totalSumOfClick, stateBanknote)
                         console.log(getCash)
                         setGetCash(`Got: ${totalSumOfClick}$`)
                         setTotalSumOfClick('')
